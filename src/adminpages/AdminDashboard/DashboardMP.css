@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito", sans-serif;
+  }
+  .login .loginContainer .btnContainer {
+    width: 100%;
+    padding: 24px 0;
+    
+  }
+  
+  .login .loginContainer .btnContainer p {
+    margin: 14px 0 0 0;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .login .loginContainer .btnContainer p span {
+    color: #ffc188;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all 400ms ease-in-out;
+  }
+  
+  .login .loginContainer .btnContainer p span:hover {
+    color: red;
+  }
+  
+  .login .loginContainer .errorMsg {
+    color: red;
+    font-size: 16px;
+  }
+
+  .table-container{
+    padding: 30px;
+  }
+
+  .logoutButton{
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    margin: auto;
+    width: 50%;
+    padding: 15px 0;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: #d3b0f4;
+    cursor: pointer;
+    margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  }

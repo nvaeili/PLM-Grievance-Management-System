@@ -1,0 +1,143 @@
+
+import { Box } from "@mui/material";
+import React, { useCallback, useState } from "react";
+import { PieChart, Pie, Sector, Cell } from "recharts";
+
+const data = [
+  { name: "1st Year", value: 75 },
+  { name: "2nd Year", value: 103 },
+  { name: "3rd Year", value: 50 },
+  { name: "4th Year", value: 23 },
+  { name: "5th Year", value: 40 },
+  { name: "6th Year", value: 20 },
+  { name: "7th Year", value: 15 }
+];
+
+
+const renderActiveShape = (props) => {
+  const RADIAN = Math.PI / 180;
+  const {
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    startAngle,
+    endAngle,
+    fill,
+    payload,
+    percent,
+    value
+  } = props;
+  const sin = Math.sin(-RADIAN * midAngle);
+  const cos = Math.cos(-RADIAN * midAngle);
+  const sx = cx + (outerRadius + 10) * cos;
+  const sy = cy + (outerRadius + 10) * sin;
+  const mx = cx + (outerRadius + 30) * cos;
+  const my = cy + (outerRadius + 30) * sin;
+  const ex = mx + (cos >= 0 ? 1 : -1) * 22;
+  const ey = my;
+  const textAnchor = cos >= 0 ? "start" : "end";
+
+  return (
+    <g>
+      <text 
+        x={cx} 
+        y={cy}
+        dy={8} 
+        textAnchor="middle" 
+        fill={fill}
+        fontSize={14}
+      >
+        {payload.name}
+      </text>
+      <Sector
+        cx={cx}
+        cy={cy}
+        innerRadius={innerRadius}
+        outerRadius={outerRadius}
+        startAngle={startAngle}
+        endAngle={endAngle}
+        fill={fill}
+      />
+      <Sector
+        cx={cx}
+        cy={cy}
+        startAngle={startAngle}
+        endAngle={endAngle}
+        innerRadius={outerRadius + 6}
+        outerRadius={outerRadius + 10}
+        fill={fill}
+      />
+      <path
+        d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`}
+        stroke={fill}
+        fill="none"
+      />
+      <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
+      <text
+        x={ex + (cos >= 0 ? 1 : -1) * 12}
+        y={ey}
+        textAnchor={textAnchor}
+        fill="#999"
+        fontSize={12}
+      >{` ${value}`}</text>
+      <text
+        x={ex + (cos >= 0 ? 1 : -1) * 12}
+        y={ey}
+        dy={18}
+        textAnchor={textAnchor}
+        fill="#999"
+        fontSize={10}
+      >
+        {`(Rate ${(percent * 100).toFixed(2)}%)`}
+      </text>
+    </g>
+  );
+};
+
+
+
+
+
+
+const COLORS = ['#d10000', '#ff6622', '#ffda21', '#33dd00' , '#1133cc','#FEC3DC','#CF9FFF'];
+
+export default function GrievanceChart() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const onPieEnter = useCallback(
+    (_, index) => {
+      setActiveIndex(index);
+    },
+    [setActiveIndex]
+  );
+
+  return (
+    <Box sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        flexWrap: 'wrap',
+    }}>
+    
+    <PieChart width={330} height={250}>
+    
+      <Pie
+        activeIndex={activeIndex}
+        activeShape={renderActiveShape}
+        data={data}
+        innerRadius={45}
+        outerRadius={65}
+        fill="#8884d8"
+        dataKey="value"
+        onMouseEnter={onPieEnter}
+      >
+        {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+      </Pie>
+
+    </PieChart>
+    </Box>
+  );
+}
