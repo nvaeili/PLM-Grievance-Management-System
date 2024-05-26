@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/PLM-Grievance-Management-System/static/css/main.ca512516.css",
+    "main.js": "/PLM-Grievance-Management-System/static/js/main.e0e1105a.js",
+    "index.html": "/PLM-Grievance-Management-System/index.html",
+    "main.ca512516.css.map": "/PLM-Grievance-Management-System/static/css/main.ca512516.css.map",
+    "main.e0e1105a.js.map": "/PLM-Grievance-Management-System/static/js/main.e0e1105a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ca512516.css",
+    "static/js/main.e0e1105a.js"
+  ]
+}
