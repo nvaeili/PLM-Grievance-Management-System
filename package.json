@@ -2,6 +2,7 @@
   "name": "grievance2.4",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://nvaeili.github.io/PLM-Grievance-Management-System",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",

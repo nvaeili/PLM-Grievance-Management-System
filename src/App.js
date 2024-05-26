@@ -10,7 +10,7 @@ import MainPageRouter from './components/MainPageRouter';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/PLM-Grievance-Management-System">
      <AuthContextProvider>
      <Routes>
       <Route path ='/dashboard/*' element = {<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
